@@ -76,5 +76,35 @@ export class CraftspotService {
           return [];
       }
   }
+
+  async getSpotsByCraftId(craftid) {
+    try {
+      const response = await axios.get(this.baseUrl + "/api/crafts/" + craftid + "spots")
+      return response.data;
+    } catch (error) {
+      return [];
+    }
+  }
+
+  async getAllSpots() {
+    try {
+      const response = await axios.get(this.baseUrl + "/api/spots")
+      return response.data;
+    } catch (error) {
+      return [];
+    }
+  }
+
+  async addSpot(craftid, spot) {
+    try {
+      console.log("craftID", craftid)
+      console.log("spot",spot)
+      const response = await axios.post(this.baseUrl + "/api/crafts/"+ craftid + "/spots", spot);
+      console.log("response", response)
+      return response.data;
+    } catch (error) {
+      return false;
+    }
+  }
 }
 

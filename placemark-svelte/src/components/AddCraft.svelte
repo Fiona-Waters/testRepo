@@ -1,7 +1,5 @@
 <script>
-    import { push } from "svelte-spa-router";
     import { createEventDispatcher, getContext } from "svelte";
-import Craft from "./Craft.svelte";
 
     let title = "";
     let errorMessage = "";
