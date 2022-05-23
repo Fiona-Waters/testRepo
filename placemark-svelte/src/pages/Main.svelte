@@ -2,6 +2,10 @@
     
 import craftSupplies from "/src/assets/craftSupplies.jpg";
 import WelcomeNavigator from "../components/WelcomeNavigator.svelte";
+import {getContext} from "svelte";
+
+const craftspotService = getContext("CraftspotService")
+craftspotService.logout();
 
 </script>
 

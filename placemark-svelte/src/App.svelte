@@ -5,6 +5,7 @@
   import Router from "svelte-spa-router";
   import { CraftspotService } from "./services/CraftspotService.js"
   import { setContext } from "svelte";
+  import Dashboard from "./pages/Dashboard.svelte";
 
   setContext("CraftspotService", new CraftspotService("http://localhost:4000"));
 
@@ -12,7 +13,10 @@
   "/": Main,
   "/login": Login,
   "/signup": Signup,
-  "/main": Main
+  "/main": Main,
+  "/dashboard": Dashboard, 
+  "/logout": Main,
+
 }
 
 </script>

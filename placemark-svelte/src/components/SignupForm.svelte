@@ -50,3 +50,8 @@ async function signup() {
         </div>
     </form>
 </section>
+{#if errorMessage}
+  <div class="section">
+    {errorMessage}
+  </div>
+{/if}
