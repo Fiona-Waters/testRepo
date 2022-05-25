@@ -62,6 +62,7 @@ export class CraftspotService {
   async addCraft(craft) {
     try {
         const response = await axios.post(this.baseUrl + "/api/crafts", craft);
+        console.log("addcraft", response.data)
         return response.data;
     } catch (error) {
         return false;
@@ -77,9 +78,14 @@ export class CraftspotService {
       }
   }
 
+  async getUserCrafts() {
+    const response = await axios.get(this.baseUrl + "/api/crafts/usercrafts")
+    return response.data
+  }
+
   async getSpotsByCraftId(craftid) {
     try {
-      const response = await axios.get(this.baseUrl + "/api/crafts/" + craftid + "spots")
+      const response = await axios.get(this.baseUrl + "/api/crafts/" + craftid + "/spots")
       return response.data;
     } catch (error) {
       return [];
@@ -97,11 +103,46 @@ export class CraftspotService {
 
   async addSpot(craftid, spot) {
     try {
-      console.log("craftID", craftid)
-      console.log("spot",spot)
       const response = await axios.post(this.baseUrl + "/api/crafts/"+ craftid + "/spots", spot);
-      console.log("response", response)
       return response.data;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  async getSpotById(spotid) {
+    try {
+      const response = await axios.get(this.baseUrl + "/api/spots/" + spotid);
+      return response.data;
+  } catch (error) {
+    return {}
+  }
+}
+
+  async updateSpot(craftid, spotid, spot) {
+    try {
+      console.log("HEY THERE")
+      const response = await axios.post(this.baseUrl + "/api/crafts/" + craftid + "/spots/" + spotid, spot )
+      console.log("done")
+      return response.data;
+    } catch (error) {
+      return []
+    }
+  }
+
+  async deleteSpot(spotid) {
+    try {
+      const response = await axios.delete(this.baseUrl + "/api/spots/" + spotid)
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  async deleteCraft(craftid) {
+    try {
+      const response = await axios.delete(this.baseUrl + "/api/crafts/" + craftid);
+      return true;
     } catch (error) {
       return false;
     }

@@ -6,14 +6,14 @@
     let craftList = [];
 
     onMount(async () => {
-        craftList = await craftspotService.getAllCrafts();
+        craftList = await craftspotService.getUserCrafts();
     });
 
     export async function refreshCraftList() {
-        craftList = await craftspotService.getAllCrafts();
+        craftList = await craftspotService.getUserCrafts();
     }
 </script>
 
 {#each craftList as craft }
-  <Craft id={craft._id} title={craft.title} />
+  <Craft craftid={craft._id} title={craft.title} on:message={refreshCraftList} />
 {/each}

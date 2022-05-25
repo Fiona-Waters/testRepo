@@ -3,16 +3,14 @@
     import ListSpots from "../components/ListSpots.svelte";
     import AddSpot from "../components/AddSpot.svelte";
     import CraftImage from "../components/CraftImage.svelte";
-
+    
     let title = "";
     
     export let params;
-    console.log("params",params);
-    console.log("params id", params.id);
     
     let listSpotComponent = undefined;
 
-    async function spotAdded(event) {
+    async function updateList(event) {
         await listSpotComponent.refreshSpotList();
     }
 
@@ -24,8 +22,8 @@
       <div class="title">
         Your {title} Spot List
       </div>
-      <ListSpots bind:this={listSpotComponent} craftId={params.id}/>
-      <AddSpot on:message={spotAdded} craftId={params.id} />
+      <ListSpots on:message={updateList} bind:this={listSpotComponent} craftId={params.id} />
+      <AddSpot on:message={updateList} craftId={params.id} />
     </div>
     <div class="column">
       <div class="title">

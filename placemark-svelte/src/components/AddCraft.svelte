@@ -3,12 +3,11 @@
 
     let title = "";
     let errorMessage = "";
-    let message = "";
 
     const craftspotService = getContext("CraftspotService");
     const dispatch = createEventDispatcher();
 
-    async function addCraft() {    
+    async function addCraft() {  
             const newCraft = {
                 title: title, 
             };
@@ -19,8 +18,6 @@
             }
     };
 </script>
-
-
 
 <form on:submit|preventDefault={addCraft}>
     <div class="field has-background-warning-light">

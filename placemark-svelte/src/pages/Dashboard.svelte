@@ -11,6 +11,7 @@
       console.log(e);
       await listCraftComponent.refreshCraftList();
     }
+
 </script>
 
 <MainNavigator />

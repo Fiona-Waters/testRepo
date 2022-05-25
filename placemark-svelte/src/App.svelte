@@ -6,7 +6,8 @@
   import { CraftspotService } from "./services/CraftspotService.js"
   import { setContext } from "svelte";
   import Dashboard from "./pages/Dashboard.svelte";
-import CraftView from "./pages/CraftView.svelte";
+  import CraftView from "./pages/CraftView.svelte";
+  import EditSpot from "./pages/EditSpot.svelte";
 
   setContext("CraftspotService", new CraftspotService("http://localhost:4000"));
 
@@ -18,6 +19,7 @@ import CraftView from "./pages/CraftView.svelte";
   "/dashboard": Dashboard, 
   "/logout": Main,
   "/craft/:id": CraftView,
+  "/craft/:craftid/spot/:spotid": EditSpot
 
 }
 

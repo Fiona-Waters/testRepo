@@ -1,18 +1,26 @@
 <script>
-import { getContext, onMount } from "svelte";
+import { getContext, onMount, createEventDispatcher } from "svelte";
 
 const craftspotService = getContext("CraftspotService");
+const dispatch = createEventDispatcher();
 let spotList = [];
+let spot = {};
 export let craftId;
-console.log('ListSpots', craftId);
 
 onMount(async () => {
-    spotList = await craftspotService.getAllSpots();
+    spotList = await craftspotService.getSpotsByCraftId(craftId);
 });
 
 export async function refreshSpotList() {
-        spotList = await craftspotService.getAllSpots();
+        spotList = await craftspotService.getSpotsByCraftId(craftId);
     }
+
+async function deleteSpot(spotid) {
+  const success = await craftspotService.deleteSpot(spotid);
+  if(success) {
+    dispatch("message")
+  }
+}
 
 </script>
 
@@ -47,12 +55,12 @@ export async function refreshSpotList() {
             {spot.category}
           </td>
           <td>
-             <a href="/craft/id/spot/id" class="ui icon button">
+             <a href="#/craft/{spot.craftid}/spot/{spot._id}" class="button">
                 <i class="fas fa-pen"></i> </a>
           </td>
           <td>
-           <a href="/craft/id/deletespot/id" class="ui icon button">
-              <i class="fas fa-trash"></i> </a>
+            <button on:click={() => { deleteSpot(spot._id) }} class="button">
+              <i class="fas fa-trash"></i> </button>
           </td>
         </tr>
       {/each}
