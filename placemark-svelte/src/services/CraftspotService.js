@@ -147,5 +147,34 @@ export class CraftspotService {
       return false;
     }
   }
+
+  async getAllUsers() {
+    try {
+      const response = await axios.get(this.baseUrl + "/api/users");
+      return response.data;
+    } catch (error) {
+        return [];
+    }
+}
+
+  async deleteUser(userid) {
+    try {
+      console.log("hello",userid)
+      const response = await axios.delete(this.baseUrl + "/api/users/" + userid);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  async getAnalyticsData() {
+    try {
+      const response = await axios.get(this.baseUrl + "/api/analytics");
+      return response;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  }
 }
 

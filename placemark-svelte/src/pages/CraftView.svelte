@@ -13,7 +13,7 @@
     async function updateList(event) {
         await listSpotComponent.refreshSpotList();
     }
-
+ 
 </script>
 
 <MainNavigator/>
