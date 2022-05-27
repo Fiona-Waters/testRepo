@@ -62,7 +62,6 @@ export class CraftspotService {
   async addCraft(craft) {
     try {
         const response = await axios.post(this.baseUrl + "/api/crafts", craft);
-        console.log("addcraft", response.data)
         return response.data;
     } catch (error) {
         return false;
@@ -121,9 +120,7 @@ export class CraftspotService {
 
   async updateSpot(craftid, spotid, spot) {
     try {
-      console.log("HEY THERE")
-      const response = await axios.post(this.baseUrl + "/api/crafts/" + craftid + "/spots/" + spotid, spot )
-      console.log("done")
+      const response = await axios.post(this.baseUrl + "/api/crafts/" + craftid + "/spots/" + spotid, spot );
       return response.data;
     } catch (error) {
       return []
@@ -157,12 +154,32 @@ export class CraftspotService {
     }
 }
 
+async getLoggedInUser() {
+  try {
+    const loggedInUser = await axios.get(this.baseUrl + "/api/users/loggedInUser");
+    return loggedInUser;
+} catch (error) {
+  console.log(error)
+  return {}
+}
+}
+
+async updateUserDetails(userid, user) {
+  try {
+    const response = await axios.post(this.baseUrl + "/api/users/updateUser/" + userid, user);
+    return response;
+  } catch (error) {
+    console.log(error);
+    return {}
+  }
+}
+
   async deleteUser(userid) {
     try {
-      console.log("hello",userid)
       const response = await axios.delete(this.baseUrl + "/api/users/" + userid);
       return true;
     } catch (error) {
+      console.log(error)
       return false;
     }
   }

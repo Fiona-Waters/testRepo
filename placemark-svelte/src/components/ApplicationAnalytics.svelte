@@ -4,7 +4,7 @@ import { getContext, onMount } from "svelte";
 const craftspotService = getContext("CraftspotService");
 
 export let results = {};
-let renderResults = {}
+let renderResults = {};
 export let users = [];
 let crafts = [];
 let spots = [];
