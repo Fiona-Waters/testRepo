@@ -24,8 +24,6 @@
 
     async function deleteUser() {
       const success = await craftspotService.deleteUser(userInfo._id);
-      console.log("deleteuser",userInfo._id)
-      console.log(success);
       if(success) {
         dispatch("message")
         push("/")

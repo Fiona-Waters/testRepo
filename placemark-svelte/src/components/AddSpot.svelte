@@ -1,5 +1,6 @@
 <script>
 import { createEventDispatcher, getContext } from "svelte";
+import sanitizeHtml from "sanitize-html";
 
 let placeName = "";
 let lat = "";
@@ -11,20 +12,17 @@ let errorMessage = "";
 const craftspotService = getContext("CraftspotService");
 const dispatch = createEventDispatcher();
 export let craftId;
-console.log('AddSpots', craftId);
 
 async function addSpot() {
     const newSpot = {
-        craftid: craftId,
-        placeName: placeName,
-        lat: lat,
-        lng: lng,
-        description: description,
-        category: category,
+        craftid: sanitizeHtml(craftId),
+        placeName: sanitizeHtml(placeName),
+        lat: sanitizeHtml(lat),
+        lng: sanitizeHtml(lng),
+        description: sanitizeHtml(description),
+        category: sanitizeHtml(category),
     };
-    console.log("params(addSpot)", craftId);
     const success = await craftspotService.addSpot(newSpot.craftid,newSpot)
-    console.log("newspotcraftid", newSpot.craftid)
     if (success) {
         dispatch("message", {spot: newSpot})
         placeName = "";

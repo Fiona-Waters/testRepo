@@ -1,5 +1,6 @@
 import axios from "axios";
 import { user } from "../stores.js";
+import sanitizeHtml from "sanitize-html";
 
 export class CraftspotService {
   baseUrl = "";
@@ -47,10 +48,10 @@ export class CraftspotService {
   async signup(firstName, lastName, email, password) {
     try {
       const userDetails = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
+        firstName: sanitizeHtml(firstName),
+        lastName: sanitizeHtml(lastName),
+        email: sanitizeHtml(email),
+        password: sanitizeHtml(password),
       };
       await axios.post(this.baseUrl + "/api/users", userDetails);
       return true;

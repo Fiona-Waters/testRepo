@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher, getContext } from "svelte";
+    import sanitizeHtml from "sanitize-html";
 
     let title = "";
     let errorMessage = "";
@@ -9,7 +10,7 @@
 
     async function addCraft() {  
             const newCraft = {
-                title: title, 
+                title: sanitizeHtml(title), 
             };
             const success = await craftspotService.addCraft(newCraft)
             if(success) {
