@@ -12,7 +12,8 @@
           <div class="buttons">
             <a id="dashboard" class="button" href="/#/dashboard"> Dashboard </a>
             <a id="admin-dashboard" class="button " href="/#/admin-dashboard">Admin Dashboard</a>
-            <a id="about" class="button" href="/#/about">About</a>
+            <a id="map" class="button" href="/#/map">Map</a>
+            <a id="charts" class="button" href="/#/charts">Charts</a>
             <a id="my-account" class="button" href="/#/my-account"> My Account </a>
             <a id="logout" class="button" href="/#/logout"> Logout </a>
           </div>

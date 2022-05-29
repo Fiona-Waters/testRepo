@@ -54,7 +54,7 @@
       </div>
       <div class="field">
         <label for="password" class="label">Password</label> 
-        <input class="input" type="password" name="password" bind:value={userInfo.password}>
+        <input class="input" type="password" name="password" placeholder="Enter new password">
       </div>
       <div class="field">
         <button class="button is-warning">Submit</button>
