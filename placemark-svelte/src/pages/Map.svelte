@@ -3,7 +3,7 @@
     import MainNavigator from "../components/MainNavigator.svelte";
     import {LeafletMap} from "../services/leaflet-map.js"
     import {getContext, onMount} from "svelte";
-
+    
     const CraftspotService = getContext("CraftspotService");
 
     const mapConfig = {
@@ -17,8 +17,10 @@
     onMount(async () => {
         map = new LeafletMap("craftspot-map", mapConfig);
         map.showZoomControl();
+        map.addLayerGroup('Spots');
+        map.addLayerGroup('Shops');
         map.showLayerControl();
-
+        
         const spots = await CraftspotService.getAllSpots();
         spots.forEach(spot => {
             addSpotMarker(spot);
@@ -27,8 +29,7 @@
 
     function addSpotMarker(spot) {
         const spotStr = `${spot.placeName}`;
-        map.addMarker({lat: spot.lat, lng: spot.lng}, spotStr);
-
+        map.addMarker({lat: spot.lat, lng: spot.lng}, spotStr, 'Spots');
     }
 </script>
 

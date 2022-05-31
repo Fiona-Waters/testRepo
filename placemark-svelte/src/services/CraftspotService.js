@@ -194,5 +194,29 @@ async updateUserDetails(userid, user) {
       return [];
     }
   }
+
+  async uploadImage(spotid, image) {
+    try {
+      const response = await axios.post(this.baseUrl + "/api/spots/" + spotid + "/uploadimage", {imagefile:image}, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+    })
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  async deleteImage(spotid) {
+    try {
+      const response = await axios.delete(this.baseUrl + "/api/spots/" + spotid + "/deleteimage")
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
 }
 

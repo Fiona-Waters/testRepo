@@ -1,5 +1,6 @@
 <script>
 import { getContext, onMount, createEventDispatcher } from "svelte";
+import { pop, push } from "svelte-spa-router";
 
 const craftspotService = getContext("CraftspotService");
 const dispatch = createEventDispatcher();
@@ -32,6 +33,7 @@ async function deleteSpot(spotid) {
         <th>Longitude</th>
         <th>Description</th>
         <th>Category</th>
+        <th>View Spot Details</th>
         <th>Edit Spot</th>
         <th>Delete Spot</th>
       </tr>
@@ -53,6 +55,13 @@ async function deleteSpot(spotid) {
           </td>
           <td>
             {spot.category}
+          </td>
+          <td>
+            <a href="#/spot/{spot._id}" class="button">
+            <span class="icon is-small">
+              <i class="fas fa-folder-open"></i>
+            </span>
+            </a>
           </td>
           <td>
              <a href="#/craft/{spot.craftid}/spot/{spot._id}" class="button">
