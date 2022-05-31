@@ -10,6 +10,9 @@
   import EditSpot from "./pages/EditSpot.svelte";
   import AdminDashboard from "./pages/AdminDashboard.svelte";
   import MyAccount from "./pages/MyAccount.svelte";
+  import Charts from "./pages/Charts.svelte";
+  import Map from "./pages/Map.svelte";
+  import SpotView from "./pages/SpotView.svelte";
 
   setContext("CraftspotService", new CraftspotService("http://localhost:4000"));
 
@@ -24,6 +27,9 @@
   "/craft/:craftid/spot/:spotid": EditSpot,
   "/admin-dashboard": AdminDashboard,
   "/my-account": MyAccount,
+  "/charts": Charts,
+  "/map": Map,
+  "/spot/:spotid": SpotView,
 
 }
 
