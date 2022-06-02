@@ -17,19 +17,29 @@
     onMount(async () => {
         map = new LeafletMap("craftspot-map", mapConfig);
         map.showZoomControl();
-        map.addLayerGroup('Spots');
-        map.addLayerGroup('Shops');
-        map.showLayerControl();
-        
         const spots = await CraftspotService.getAllSpots();
+        
+        function onlyUnique(value, index, self) {
+            return self.indexOf(value) === index;
+        }
+
+        const categories = spots.map((spot) => {
+            return spot.category;
+        }).filter(onlyUnique)
+        
+        categories.forEach(category => {
+            map.addLayerGroup(category);
+        })
+
         spots.forEach(spot => {
             addSpotMarker(spot);
         });
+        map.showLayerControl();
     });
 
     function addSpotMarker(spot) {
         const spotStr = `${spot.placeName}`;
-        map.addMarker({lat: spot.lat, lng: spot.lng}, spotStr, 'Spots');
+        map.addMarker({lat: spot.lat, lng: spot.lng}, spotStr, spot.category);
     }
 </script>
 

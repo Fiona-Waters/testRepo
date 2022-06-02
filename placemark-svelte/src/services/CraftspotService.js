@@ -218,5 +218,15 @@ async updateUserDetails(userid, user) {
       return false;
     }
   }
+
+  async getSpotsPerCategory() {
+    try {
+      const info = await axios.get(this.baseUrl + "/api/spots/categories")
+      return info.data;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  } 
 }
 

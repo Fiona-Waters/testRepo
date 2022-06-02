@@ -15,12 +15,12 @@
   };
 
     let categoryData = {
-        labels: ['Shops', 'Classes', 'Exhibitions', 'Knit Nights', 'Festivals', 'Other' ],
+        labels: ['Class', 'Festival', 'Other', 'Shop', 'Exhibition', 'Knit Night' ],
         datasets: [
             {
                 values: [0, 0, 0, 0, 0, 0]
             }
-        ]
+        ],
     }
 
   onMount(async () => {
@@ -30,12 +30,16 @@
       applicationData.datasets[0].values[1] = spotList.length;
       let craftList = await craftspotService.getAllCrafts();
       applicationData.datasets[0].values[2] = craftList.length;
-      categoryData.datasets[0].values[0] = 12;
-      categoryData.datasets[0].values[1] = 19;
-      categoryData.datasets[0].values[2] = 8;
-      categoryData.datasets[0].values[3] = 6;
-      categoryData.datasets[0].values[4] = 15;
-      categoryData.datasets[0].values[5] = 3;
+
+      let info = await craftspotService.getSpotsPerCategory();
+      const labels = info.map((item) => {
+        return item._id;
+      })
+      const values = info.map((item) => {
+        return item.totaldocs;
+      })
+      categoryData.labels = labels;
+      categoryData.datasets[0].values = values;
   })
 </script>
 
@@ -44,8 +48,8 @@
 <div class="box box-link-hover-shadow has-background-warning-light"> 
   <div class="columns">
     <div class="column box has-text-centered">
-      <h1 class="title is-4">Application Data Bar Chart</h1>
-      <Chart data={applicationData} type="bar" />
+      <h1 class="title is-4">Application Data</h1>
+      <Chart data={applicationData} type="bar"  />
     </div>
       </div>
     </div>
@@ -55,8 +59,8 @@
     <div class="box box-link-hover-shadow has-background-warning-light"> 
       <div class="columns">
             <div class="column has-text-centered">
-              <h1 class="title is-4">Application Data Pie Chart</h1>
-              <Chart data={applicationData} type="pie"/>
+              <h1 class="title is-4">Number of Spots Per Category</h1>
+              <Chart data={categoryData} type="pie" maxSlices={categoryData.labels.length} />
             </div>
           </div>
         </div>
