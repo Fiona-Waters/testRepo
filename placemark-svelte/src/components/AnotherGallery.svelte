@@ -16,8 +16,7 @@
 
 </script>
 <MainNavigator/>
-
-<div class="box" id="craftspot-map" style="height:800px">
+<div class="box box-link-hover-shadow has-background-warning-light" id="craftspot-map" style="height:800px">
     <div class="title">CraftSpot Gallery</div>
 
 <Gallery gap="10" maxColumnWidth="200">
