@@ -1,9 +1,7 @@
 <script>
-    import SpotImage from "../components/SpotImage.svelte";
-    import Image from "../components/Image.svelte";
     import { onMount, getContext } from "svelte";
     import MainNavigator from "../components/MainNavigator.svelte";
-    
+    import SpotGallery from "../components/SpotGallery.svelte";
 
     let spot = {};
     export let params;
@@ -17,16 +15,14 @@
         spot = await craftspotService.getSpotById(params.spotid);
     }
 
-    
-
 </script>
 
 <MainNavigator/>
 <section class="section columns is-vcentered">
-    <div class="column has-text-centered">
+    <div class="column ">
         <div class="title">{spot.placeName}</div>
 <div class="box">
-<table class="table is-half is-narrow is-striped has-background-warning-light">
+<table class="table is-fullwidth is-striped has-background-warning-light">
     <thead>
       <tr>
         <th>Place Name</th>
@@ -58,12 +54,9 @@
   </table>
 </div>
 </div>
-<div class="column has-text-centered">
-{#if spot.img}  
-    <Image spot={spot} on:message={refreshSpot} />
-{/if} 
-
-<SpotImage spotid={spot._id} on:message={refreshSpot}/>
-</div>
 </section>
+
+<SpotGallery spotid={spot._id} images={spot.images} on:message={refreshSpot}/>
+
+
 

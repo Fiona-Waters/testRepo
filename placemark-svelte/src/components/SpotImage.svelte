@@ -11,6 +11,7 @@
         const success = await craftspotService.uploadImage(spotid, image[0]);
         if (success) {
             dispatch("message", {})
+            imageFilename = "";
         }
     }
 

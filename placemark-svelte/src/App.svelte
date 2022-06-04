@@ -13,6 +13,7 @@
   import Charts from "./pages/Charts.svelte";
   import Map from "./pages/Map.svelte";
   import SpotView from "./pages/SpotView.svelte";
+  import PhotoGallery from "./pages/PhotoGallery.svelte";
 
   setContext("CraftspotService", new CraftspotService("http://localhost:4000"));
 
@@ -30,6 +31,7 @@
   "/charts": Charts,
   "/map": Map,
   "/spot/:spotid": SpotView,
+  "/photogallery": PhotoGallery,
 
 }
 

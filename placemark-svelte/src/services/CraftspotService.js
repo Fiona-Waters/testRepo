@@ -85,7 +85,9 @@ export class CraftspotService {
 
   async getSpotsByCraftId(craftid) {
     try {
+      console.log("craftspot-service", craftid)
       const response = await axios.get(this.baseUrl + "/api/crafts/" + craftid + "/spots")
+      console.log("reponse", response)
       return response.data;
     } catch (error) {
       return [];
@@ -209,9 +211,9 @@ async updateUserDetails(userid, user) {
     }
   }
 
-  async deleteImage(spotid) {
+  async deleteImage(spotid, imgid) {
     try {
-      const response = await axios.delete(this.baseUrl + "/api/spots/" + spotid + "/deleteimage")
+      const response = await axios.delete(this.baseUrl + "/api/spots/" + spotid + "/deleteimage/" +imgid)
       return true;
     } catch (error) {
       console.log(error);
