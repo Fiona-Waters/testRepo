@@ -32,6 +32,7 @@ export class CraftspotService {
       }
       return false;
     } catch (error) {
+      console.log(error);
       return false;
     }
   }
