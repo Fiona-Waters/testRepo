@@ -45,5 +45,4 @@
 
 <MainNavigator/>
 <label for="title" class="label">All Spot Locations</label>
-<div class="box" id="craftspot-map" style="height:800px">
-</div>
+<div class="box" id="craftspot-map" style="height:800px"></div>

@@ -3,7 +3,6 @@ import MainNavigator from "../components/MainNavigator.svelte";
 import UserList from "../components/UserList.svelte";
 import ApplicationAnalytics from "../components/ApplicationAnalytics.svelte";
 
-
 let userListComponent = undefined;
 
     async function updateList(event) {
@@ -12,8 +11,8 @@ let userListComponent = undefined;
 </script>
 
 <MainNavigator/>
-<UserList on:message={updateList} bind:this={userListComponent}/>
 
+<UserList on:message={updateList} bind:this={userListComponent}/>
 
 <ApplicationAnalytics/>
 

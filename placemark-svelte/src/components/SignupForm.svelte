@@ -3,13 +3,11 @@
 import { push } from "svelte-spa-router";
 import { getContext } from "svelte";
 
-
 let firstName = "";
 let lastName = "";
 let email = "";
 let password = "";
 let errorMessage = "";
-
 const craftspotService = getContext("CraftspotService");
 
 async function signup() {

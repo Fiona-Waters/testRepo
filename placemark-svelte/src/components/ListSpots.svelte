@@ -1,16 +1,14 @@
 <script>
 import { getContext, onMount, createEventDispatcher } from "svelte";
-import { pop, push } from "svelte-spa-router";
 
 const craftspotService = getContext("CraftspotService");
 const dispatch = createEventDispatcher();
 let spotList = [];
-let spot = {};
 export let craftId;
 
 onMount(async () => {
     spotList = await craftspotService.getSpotsByCraftId(craftId);
-});
+  });
 
 export async function refreshSpotList() {
         spotList = await craftspotService.getSpotsByCraftId(craftId);
@@ -65,11 +63,13 @@ async function deleteSpot(spotid) {
           </td>
           <td>
              <a href="#/craft/{spot.craftid}/spot/{spot._id}" class="button">
-                <i class="fas fa-pen"></i> </a>
+                <i class="fas fa-pen"></i> 
+              </a>
           </td>
           <td>
             <button on:click={() => { deleteSpot(spot._id) }} class="button">
-              <i class="fas fa-trash"></i> </button>
+              <i class="fas fa-trash"></i> 
+            </button>
           </td>
         </tr>
       {/each}

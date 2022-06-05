@@ -21,12 +21,11 @@
                 <div class="columns is-inline-flex is-flex-direction-row is-flex-wrap-wrap">
                         {#each images as image}
                         <div class="column">
-                        <Image image={image} spotid={spotid} on:message={refresh} />
+                            <Image image={image} spotid={spotid} on:message={refresh} />
+                        </div>
+                        {/each}        
                 </div>
-                        {/each}
-                    
-            </div>
-    </div>        
+            </div>        
     </div>
 </section>
 <section>

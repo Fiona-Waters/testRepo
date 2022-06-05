@@ -45,23 +45,23 @@
 
 <MainNavigator/>
 <div class=section>
-<div class="box box-link-hover-shadow has-background-warning-light"> 
-  <div class="columns">
-    <div class="column box has-text-centered">
-      <h1 class="title is-4">Application Data</h1>
-      <Chart data={applicationData} type="bar"  />
-    </div>
+  <div class="box box-link-hover-shadow has-background-warning-light"> 
+    <div class="columns">
+      <div class="column box has-text-centered">
+        <h1 class="title is-4">Application Data</h1>
+          <Chart data={applicationData} type="bar"  />
       </div>
     </div>
+  </div>
 </div>
     
 <div class=section>
-    <div class="box box-link-hover-shadow has-background-warning-light"> 
-      <div class="columns">
-            <div class="column has-text-centered">
-              <h1 class="title is-4">Number of Spots Per Category</h1>
-              <Chart data={categoryData} type="pie" maxSlices={categoryData.labels.length} />
-            </div>
-          </div>
-        </div>
+  <div class="box box-link-hover-shadow has-background-warning-light"> 
+    <div class="columns">
+      <div class="column has-text-centered">
+        <h1 class="title is-4">Number of Spots Per Category</h1>
+          <Chart data={categoryData} type="pie" maxSlices={categoryData.labels.length} />
+      </div>
     </div>
+  </div>
+</div>

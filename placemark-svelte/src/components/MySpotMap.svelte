@@ -3,10 +3,6 @@
     import {LeafletMap} from "../services/leaflet-map.js"
     import {getContext, onMount} from "svelte";
 
-    function spotAdded(event) {
-        console.log("event",event.detail.spot);
-    }
-
     const craftspotService = getContext("CraftspotService");
     export let craftId;
     let spotList = [];

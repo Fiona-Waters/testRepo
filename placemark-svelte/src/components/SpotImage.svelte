@@ -16,11 +16,12 @@
     }
 
     function onFileChange(event) {
-    if (event.target.files.length > 0) {
-      imageFilename = event.target.files[0].name;
-    }
-  };    
+      if (event.target.files.length > 0) {
+        imageFilename = event.target.files[0].name;
+      }
+    };    
   </script>
+  
   <div class="column has-text-centered">
       <div class="box">
         <form on:submit|preventDefault={uploadImage}>

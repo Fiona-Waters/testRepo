@@ -15,7 +15,6 @@
  
     async function updateList(event) {
       await listSpotComponent.refreshSpotList();
-
     }
  
 </script>
@@ -29,7 +28,7 @@
       <ListSpots on:message={updateList} bind:this={listSpotComponent} craftId={params.id} />
       <AddSpot on:message={spotAdded} craftId={params.id} />
     </div>
-  </section>
+</section>
   <div class="title"> Spot Map
     <MySpotMap on:message={spotAdded} bind:this={spotMap} craftId={params.id}/>
   </div>

@@ -4,7 +4,6 @@
 
     let title = "";
     let errorMessage = "";
-
     const craftspotService = getContext("CraftspotService");
     const dispatch = createEventDispatcher();
 
@@ -26,8 +25,8 @@
       <input bind:value={title} id="title" class="input" type="text" placeholder="Enter craft name" name="title" />
     </div>
     <button class="button is-link is-warning">Add Craft</button>
-  </form>
-  {#if errorMessage}
+</form>
+{#if errorMessage}
   <div class="section">
     {errorMessage}
   </div>

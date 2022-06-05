@@ -13,14 +13,13 @@ craftspotService.logout();
 <div class="columns is-vcentered">
     <div class="column is-one-third-right">
         <WelcomeNavigator/>
-    </div>
-    
+    </div>   
 </div>
 <div class="columns is-vcentered ">
     <figure class="image">
-          <img width="300" class="is-rounded" src="{craftSupplies}" alt="craft supplies">
+        <img width="300" class="is-rounded" src="{craftSupplies}" alt="craft supplies">
     </figure>
     <div class="column is-right">
-    <h1 class="title has-text-right">Please sign up or log in...</h1>
-  </div>
+        <h1 class="title has-text-right">Please sign up or log in...</h1>
     </div>
+</div>
