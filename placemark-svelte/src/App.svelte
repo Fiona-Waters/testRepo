@@ -16,7 +16,7 @@
   import PhotoGallery from "./pages/PhotoGallery.svelte";
 
   // setContext("CraftspotService", new CraftspotService("https://limitless-cliffs-75212.herokuapp.com"));
-  setContext("CraftspotService", new CraftspotService("http://3.91.231.164:4000"));
+  setContext("CraftspotService", new CraftspotService("http://54.211.34.162:4000"));
   
 
   let routes = {
