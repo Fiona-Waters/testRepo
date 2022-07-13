@@ -1,11 +1,7 @@
 site_name: Craftspot Svelte
 site_url: https://example.com
-repo_url: https://github.com/Fiona-Waters/testRepo/tree/develop/placemark-svelte
+repo_url: https://github.com/Fiona-Waters/testRepo/
 theme: readthedocs
 plugins:
   - search
-docs_dir: docs
-nav:
-- 'index.md'
-- 'about.md'
-- moreDocs/insidefolder.md
+
