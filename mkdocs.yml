@@ -4,3 +4,7 @@ repo_url: https://github.com/Fiona-Waters/testRepo/tree/develop/placemark-svelte
 theme: readthedocs
 plugins:
   - search
+nav:
+    - Home: 'about.md'
+    - 'moreDocs':
+        - 'Writing your docs': 'insidefolder.md'
