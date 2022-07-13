@@ -1,5 +1,4 @@
 <script>
-    import {user} from "../stores.js"
     import MainNavigator from "../components/MainNavigator.svelte";
     import ListCraft from "../components/ListCraft.svelte";
     import AddCraft from "../components/AddCraft.svelte";

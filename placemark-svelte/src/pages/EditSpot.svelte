@@ -6,20 +6,19 @@
     let spot = {};
     let errorMessage = "";
     export let params;
+    const craftspotService = getContext("CraftspotService");
+    const dispatch = createEventDispatcher();
     
     onMount(async () => {
         spot = await craftspotService.getSpotById(params.spotid);
     });
-
-    const craftspotService = getContext("CraftspotService");
-    const dispatch = createEventDispatcher();
 
     async function updateSpot() {
         const success = await craftspotService.updateSpot(params.craftid, params.spotid, spot) 
         if (success) {
             dispatch("message", {spot: spot})
             pop();
-        }
+          }
         }
     
 </script>

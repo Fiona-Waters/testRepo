@@ -13,10 +13,13 @@ export class LeafletMap {
       attribution:
         'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)',
     }),
-    Satellite: L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-      attribution:
-        "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
-    }),
+    Satellite: L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      {
+        attribution:
+          "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+      }
+    ),
   };
 
   constructor(id, descriptor, activeLayer = "") {
@@ -44,7 +47,9 @@ export class LeafletMap {
   }
 
   showLayerControl() {
-    this.control = L.control.layers(this.baseLayers, this.overlays).addTo(this.imap);
+    this.control = L.control
+      .layers(this.baseLayers, this.overlays)
+      .addTo(this.imap);
   }
 
   showZoomControl(position = "topleft") {
@@ -68,9 +73,9 @@ export class LeafletMap {
     let group = {};
     let marker = L.marker([location.lat, location.lng]);
     if (popupText) {
-      var popup = L.popup({autoClose: true, closeOnClick: true});
+      var popup = L.popup({ autoClose: true, closeOnClick: true });
       popup.setContent(popupText);
-      marker.bindPopup(popup, { closeButton: false});
+      marker.bindPopup(popup, { closeButton: false });
     }
     if (!this.overlays[layerTitle]) {
       group = L.layerGroup([]);

@@ -7,31 +7,40 @@ export class CraftspotService {
 
   constructor(baseUrl) {
     this.baseUrl = baseUrl;
-    const craftspotCredentials = localStorage.craftspot
+    const craftspotCredentials = localStorage.craftspot;
     if (craftspotCredentials) {
-      const savedUser = JSON.parse(craftspotCredentials)
+      const savedUser = JSON.parse(craftspotCredentials);
       user.set({
         email: savedUser.email,
         token: savedUser.token,
       });
-      axios.defaults.headers.common["Authorization"] = "Bearer " + savedUser.token;
+      axios.defaults.headers.common["Authorization"] =
+        "Bearer " + savedUser.token;
     }
   }
 
   async login(email, password) {
     try {
-      const response = await axios.post(`${this.baseUrl}/api/users/authenticate`, {email, password});
-      axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
+      const response = await axios.post(
+        `${this.baseUrl}/api/users/authenticate`,
+        { email, password }
+      );
+      axios.defaults.headers.common["Authorization"] =
+        "Bearer " + response.data.token;
       if (response.data.success) {
         user.set({
           email: email,
           token: response.data.token,
         });
-        localStorage.craftspot = JSON.stringify({email:email, token:response.data.token});
+        localStorage.craftspot = JSON.stringify({
+          email: email,
+          token: response.data.token,
+        });
         return true;
       }
       return false;
     } catch (error) {
+      console.log(error);
       return false;
     }
   }
@@ -62,32 +71,34 @@ export class CraftspotService {
 
   async addCraft(craft) {
     try {
-        const response = await axios.post(this.baseUrl + "/api/crafts", craft);
-        return response.data;
+      const response = await axios.post(this.baseUrl + "/api/crafts", craft);
+      return response.data;
     } catch (error) {
-        return false;
+      return false;
     }
   }
 
   async getAllCrafts() {
-      try {
-        const response = await axios.get(this.baseUrl + "/api/crafts");
-        return response.data;
-      } catch (error) {
-          return [];
-      }
+    try {
+      const response = await axios.get(this.baseUrl + "/api/crafts");
+      return response.data;
+    } catch (error) {
+      return [];
+    }
   }
 
   async getUserCrafts() {
-    const response = await axios.get(this.baseUrl + "/api/crafts/usercrafts")
-    return response.data
+    const response = await axios.get(this.baseUrl + "/api/crafts/usercrafts");
+    return response.data;
   }
 
   async getSpotsByCraftId(craftid) {
     try {
-      console.log("craftspot-service", craftid)
-      const response = await axios.get(this.baseUrl + "/api/crafts/" + craftid + "/spots")
-      console.log("reponse", response)
+      console.log("craftspot-service", craftid);
+      const response = await axios.get(
+        this.baseUrl + "/api/crafts/" + craftid + "/spots"
+      );
+      console.log("reponse", response);
       return response.data;
     } catch (error) {
       return [];
@@ -96,7 +107,7 @@ export class CraftspotService {
 
   async getAllSpots() {
     try {
-      const response = await axios.get(this.baseUrl + "/api/spots")
+      const response = await axios.get(this.baseUrl + "/api/spots");
       return response.data;
     } catch (error) {
       return [];
@@ -105,7 +116,10 @@ export class CraftspotService {
 
   async addSpot(craftid, spot) {
     try {
-      const response = await axios.post(this.baseUrl + "/api/crafts/"+ craftid + "/spots", spot);
+      const response = await axios.post(
+        this.baseUrl + "/api/crafts/" + craftid + "/spots",
+        spot
+      );
       return response.data;
     } catch (error) {
       return false;
@@ -116,23 +130,28 @@ export class CraftspotService {
     try {
       const response = await axios.get(this.baseUrl + "/api/spots/" + spotid);
       return response.data;
-  } catch (error) {
-    return {}
+    } catch (error) {
+      return {};
+    }
   }
-}
 
   async updateSpot(craftid, spotid, spot) {
     try {
-      const response = await axios.post(this.baseUrl + "/api/crafts/" + craftid + "/spots/" + spotid, spot );
+      const response = await axios.post(
+        this.baseUrl + "/api/crafts/" + craftid + "/spots/" + spotid,
+        spot
+      );
       return response.data;
     } catch (error) {
-      return []
+      return [];
     }
   }
 
   async deleteSpot(spotid) {
     try {
-      const response = await axios.delete(this.baseUrl + "/api/spots/" + spotid)
+      const response = await axios.delete(
+        this.baseUrl + "/api/spots/" + spotid
+      );
       return true;
     } catch (error) {
       return false;
@@ -141,7 +160,9 @@ export class CraftspotService {
 
   async deleteCraft(craftid) {
     try {
-      const response = await axios.delete(this.baseUrl + "/api/crafts/" + craftid);
+      const response = await axios.delete(
+        this.baseUrl + "/api/crafts/" + craftid
+      );
       return true;
     } catch (error) {
       return false;
@@ -153,36 +174,43 @@ export class CraftspotService {
       const response = await axios.get(this.baseUrl + "/api/users");
       return response.data;
     } catch (error) {
-        return [];
+      return [];
     }
-}
-
-async getLoggedInUser() {
-  try {
-    const loggedInUser = await axios.get(this.baseUrl + "/api/users/loggedInUser");
-    return loggedInUser;
-} catch (error) {
-  console.log(error)
-  return {}
-}
-}
-
-async updateUserDetails(userid, user) {
-  try {
-    const response = await axios.post(this.baseUrl + "/api/users/updateUser/" + userid, user);
-    return response;
-  } catch (error) {
-    console.log(error);
-    return {}
   }
-}
+
+  async getLoggedInUser() {
+    try {
+      const loggedInUser = await axios.get(
+        this.baseUrl + "/api/users/loggedInUser"
+      );
+      return loggedInUser;
+    } catch (error) {
+      console.log(error);
+      return {};
+    }
+  }
+
+  async updateUserDetails(userid, user) {
+    try {
+      const response = await axios.post(
+        this.baseUrl + "/api/users/updateUser/" + userid,
+        user
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return {};
+    }
+  }
 
   async deleteUser(userid) {
     try {
-      const response = await axios.delete(this.baseUrl + "/api/users/" + userid);
+      const response = await axios.delete(
+        this.baseUrl + "/api/users/" + userid
+      );
       return true;
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return false;
     }
   }
@@ -199,11 +227,15 @@ async updateUserDetails(userid, user) {
 
   async uploadImage(spotid, image) {
     try {
-      const response = await axios.post(this.baseUrl + "/api/spots/" + spotid + "/uploadimage", {imagefile:image}, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      const response = await axios.post(
+        this.baseUrl + "/api/spots/" + spotid + "/uploadimage",
+        { imagefile: image },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-    })
+      );
       return true;
     } catch (error) {
       console.log(error);
@@ -213,7 +245,9 @@ async updateUserDetails(userid, user) {
 
   async deleteImage(spotid, imgid) {
     try {
-      const response = await axios.delete(this.baseUrl + "/api/spots/" + spotid + "/deleteimage/" +imgid)
+      const response = await axios.delete(
+        this.baseUrl + "/api/spots/" + spotid + "/deleteimage/" + imgid
+      );
       return true;
     } catch (error) {
       console.log(error);
@@ -223,12 +257,11 @@ async updateUserDetails(userid, user) {
 
   async getSpotsPerCategory() {
     try {
-      const info = await axios.get(this.baseUrl + "/api/spots/categories")
+      const info = await axios.get(this.baseUrl + "/api/spots/categories");
       return info.data;
     } catch (error) {
       console.log(error);
       return [];
     }
-  } 
+  }
 }
-

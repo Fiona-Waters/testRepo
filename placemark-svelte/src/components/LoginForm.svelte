@@ -5,7 +5,6 @@
     let email = "";
     let password = "";
     let errorMessage = "";
-
     const craftspotService = getContext("CraftspotService");
 
     async function login() {

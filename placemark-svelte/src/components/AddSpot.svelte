@@ -1,19 +1,18 @@
 <script>
-import { createEventDispatcher, getContext } from "svelte";
-import sanitizeHtml from "sanitize-html";
+  import { createEventDispatcher, getContext } from "svelte";
+  import sanitizeHtml from "sanitize-html";
 
-let placeName = "";
-let lat = "";
-let lng = "";
-let description = "";
-let category = "";
-let errorMessage = "";
+  let placeName = "";
+  let lat = "";
+  let lng = "";
+  let description = "";
+  let category = "";
+  let errorMessage = "";
+  export let craftId;
+  const craftspotService = getContext("CraftspotService");
+  const dispatch = createEventDispatcher();
 
-const craftspotService = getContext("CraftspotService");
-const dispatch = createEventDispatcher();
-export let craftId;
-
-async function addSpot() {
+  async function addSpot() {
     const newSpot = {
         craftid: sanitizeHtml(craftId),
         placeName: sanitizeHtml(placeName),
@@ -32,7 +31,6 @@ async function addSpot() {
         category = "";
     }
 }
-
 </script>
 
 <form on:submit|preventDefault={addSpot}>

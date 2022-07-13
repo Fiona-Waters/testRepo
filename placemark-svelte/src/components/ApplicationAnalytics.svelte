@@ -2,7 +2,6 @@
 import { getContext, onMount } from "svelte";
 
 const craftspotService = getContext("CraftspotService");
-
 export let results = {};
 let renderResults = {};
 export let users = [];
@@ -14,8 +13,7 @@ onMount(async () => {
         renderResults = results.data;
         users = await craftspotService.getAllUsers();
         crafts = await craftspotService.getAllCrafts();
-        spots = await craftspotService.getAllSpots();
-        
+        spots = await craftspotService.getAllSpots();   
     })
 
 </script>

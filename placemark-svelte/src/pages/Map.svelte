@@ -1,5 +1,5 @@
 <script>
-    import 'leaflet/dist/leaflet.css';
+  //  import 'leaflet/dist/leaflet.css';
     import MainNavigator from "../components/MainNavigator.svelte";
     import {LeafletMap} from "../services/leaflet-map.js"
     import {getContext, onMount} from "svelte";
@@ -45,5 +45,4 @@
 
 <MainNavigator/>
 <label for="title" class="label">All Spot Locations</label>
-<div class="box" id="craftspot-map" style="height:800px">
-</div>
+<div class="box" id="craftspot-map" style="height:800px"></div>

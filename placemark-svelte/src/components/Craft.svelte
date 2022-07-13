@@ -1,14 +1,13 @@
 <script>
-    import {getContext, createEventDispatcher} from "svelte";
-   
-    export let title;
-    export let craftid;
+  import {getContext, createEventDispatcher} from "svelte";
 
-    const craftspotService = getContext("CraftspotService");
-    const dispatch = createEventDispatcher();
+  export let title;
+  export let craftid;
+  const craftspotService = getContext("CraftspotService");
+  const dispatch = createEventDispatcher();
    
-    async function deleteCraft() {  
-      const success = await craftspotService.deleteCraft(craftid);
+  async function deleteCraft() {  
+    const success = await craftspotService.deleteCraft(craftid);
       if(success){
           dispatch("message")
         }
