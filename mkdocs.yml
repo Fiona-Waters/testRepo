@@ -5,3 +5,7 @@ theme: readthedocs
 plugins:
   - search
 docs_dir: docs
+pages:
+- 'index.md'
+- 'about.md'
+- moreDocs/insidefolder.md
